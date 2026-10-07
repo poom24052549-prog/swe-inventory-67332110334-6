@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SWE Inventory Management - High-Fidelity UI Mockups</title>
+  <style>
+    :root {
+      --primary: #1E40AF;
+      --primary-hover: #1D4ED8;
+      --success: #15803D;
+      --warning: #B45309;
+      --warning-bg: #FEF3C7;
+      --text-main: #111827;
+      --text-muted: #4B5563;
+      --bg-page: #F3F4F6;
+      --bg-card: #FFFFFF;
+      --border-color: #D1D5DB;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      padding: 24px;
+      line-height: 1.5;
+    }
+    .header-bar {
+      background-color: var(--primary);
+      color: #FFFFFF;
+      padding: 16px 24px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .tabs-nav {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .tab-btn {
+      padding: 10px 20px;
+      background: #FFFFFF;
+      border: 2px solid var(--border-color);
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-main);
+      cursor: pointer;
+    }
+    .tab-btn.active {
+      background: var(--primary);
+      color: #FFFFFF;
+      border-color: var(--primary);
+    }
+    .screen-container {
+      display: none;
+      background: var(--bg-card);
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      padding: 24px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+    .screen-container.active { display: block; }
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .badge-primary { background: #DBEAFE; color: var(--primary); }
+    .badge-warning { background: var(--warning-bg); color: var(--warning); }
+    .badge-success { background: #DCFCE7; color: var(--success); }
+    .btn {
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      font-size: 14px;
+    }
+    .btn-primary { background: var(--primary); color: #FFFFFF; }
+    .btn-secondary { background: #FFFFFF; color: var(--text-main); border: 1px solid var(--border-color); }
+    .form-group { margin-bottom: 16px; }
+    label { display: block; font-weight: 600; margin-bottom: 6px; color: var(--text-main); font-size: 14px; }
+    .required { color: #DC2626; margin-left: 2px; }
+    input[type="text"], input[type="password"], input[type="number"], select {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      font-size: 14px;
+      color: var(--text-main);
+    }
+    .help-error { color: #DC2626; font-size: 12px; margin-top: 4px; display: flex; align-items: center; gap: 4px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+    th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border-color); }
+    th { background: #F9FAFB; font-weight: 600; }
+  </style>
+</head>
+<body>
+
+  <div class="header-bar">
+    <div>
+      <h2>SWE Inventory Management System</h2>
+      <p style="font-size: 13px; opacity: 0.9;">WCAG AA Accessible UI Prototypes - ECP มทร.อีสาน</p>
+    </div>
+    <div>
+      <span>ผู้ใช้งาน: สมหมาย รักงาน (เจ้าหน้าที่คลัง)</span>
+    </div>
+  </div>
+
+  <div class="tabs-nav">
+    <button class="tab-btn active" onclick="showScreen('login')">1. หน้าเข้าสู่ระบบ (Login)</button>
+    <button class="tab-btn" onclick="showScreen('dashboard')">2. หน้าแดชบอร์ด (Dashboard)</button>
+    <button class="tab-btn" onclick="showScreen('add')">3. หน้าเพิ่มสินค้าใหม่ (Add Product)</button>
+  </div>
+
+  <!-- Screen 1: Login -->
+  <div id="screen-login" class="screen-container active">
+    <div style="max-width: 420px; margin: 40px auto; border: 1px solid var(--border-color); padding: 32px; border-radius: 8px; background: #FFF;">
+      <h3 style="margin-bottom: 8px; text-align: center;">เข้าสู่ระบบ</h3>
+      <p style="font-size: 13px; color: var(--text-muted); text-align: center; margin-bottom: 20px;">กรอกบัญชีผู้ใช้งานเพื่อเข้าสู่ระบบคลังสินค้า</p>
+      
+      <div style="background: #FEF2F2; border-left: 4px solid #DC2626; padding: 10px; margin-bottom: 16px; border-radius: 4px; font-size: 12px; color: #991B1B;">
+        <strong>[!] ข้อผิดพลาด:</strong> ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบอีกครั้ง
+      </div>
+
+      <div class="form-group">
+        <label for="username">ชื่อผู้ใช้ (Username) <span class="required">*</span></label>
+        <input type="text" id="username" value="sommai.r" aria-required="true">
+      </div>
+      <div class="form-group">
+        <label for="password">รหัสผ่าน (Password) <span class="required">*</span></label>
+        <input type="password" id="password" value="••••••••••••" aria-required="true">
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; font-size: 13px;">
+        <label style="display: flex; align-items: center; gap: 6px; font-weight: normal; cursor: pointer;">
+          <input type="checkbox" checked> จดจำการเข้าสู่ระบบ
+        </label>
+        <a href="#" style="color: var(--primary); text-decoration: none;">ลืมรหัสผ่าน?</a>
+      </div>
+      <button class="btn btn-primary" style="width: 100%;">เข้าสู่ระบบ (Sign In)</button>
+    </div>
+  </div>
+
+  <!-- Screen 2: Dashboard -->
+  <div id="screen-dashboard" class="screen-container">
+    <h3>ภาพรวมคลังสินค้า (Inventory Dashboard)</h3>
+    <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 14px;">สรุปยอดสต็อกสินค้าทั้งหมดและสถานะสินค้าใกล้หมด</p>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 24px;">
+      <div style="background: #FFF; border: 1px solid var(--border-color); border-radius: 8px; padding: 16px;">
+        <div style="font-size: 12px; color: var(--text-muted);">มูลค่าสินค้าทั้งหมด</div>
+        <div style="font-size: 24px; font-weight: bold; color: var(--text-main); margin: 6px 0;">฿ 1,450,800</div>
+        <span class="badge badge-success">✓ คำนวณตามราคาขาย</span>
+      </div>
+      <div style="background: #FFF; border: 1px solid var(--border-color); border-radius: 8px; padding: 16px;">
+        <div style="font-size: 12px; color: var(--text-muted);">สินค้าที่จับต้องได้ (Physical)</div>
+        <div style="font-size: 24px; font-weight: bold; color: var(--text-main); margin: 6px 0;">128 รายการ</div>
+        <span class="badge badge-primary">ต้องนับสต็อกจริง</span>
+      </div>
+      <div style="background: #FFF; border: 1px solid var(--border-color); border-radius: 8px; padding: 16px;">
+        <div style="font-size: 12px; color: var(--text-muted);">สินค้าดิจิทัล (Digital Files)</div>
+        <div style="font-size: 24px; font-weight: bold; color: var(--text-main); margin: 6px 0;">42 รายการ</div>
+        <span class="badge badge-primary">ขายได้ไม่จำกัด</span>
+      </div>
+      <div style="background: var(--warning-bg); border: 1px solid var(--warning); border-radius: 8px; padding: 16px;">
+        <div style="font-size: 12px; color: var(--warning); font-weight: bold;">[!] สินค้าสต็อกต่ำ (<= 5)</div>
+        <div style="font-size: 24px; font-weight: bold; color: var(--warning); margin: 6px 0;">3 รายการ</div>
+        <span class="badge badge-warning">ต้องสั่งซื้อเพิ่ม</span>
+      </div>
+    </div>
+
+    <div style="background: #FFFBEB; border: 1px solid var(--warning); border-radius: 6px; padding: 12px; margin-bottom: 16px;">
+      <strong style="color: var(--warning);">[!] รายการสินค้าใกล้หมดสต็อก (Low Stock Alert - เกณฑ์ &le; 5 ชิ้น)</strong>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>รหัสสินค้า</th>
+          <th>ชื่อสินค้า</th>
+          <th>ชนิดสินค้า</th>
+          <th>คงเหลือ</th>
+          <th>ราคา/หน่วย</th>
+          <th>การจัดการ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>P-00102</td>
+          <td>เมาส์ไร้สายบลูทูธ</td>
+          <td><span class="badge badge-primary">จับต้องได้</span></td>
+          <td style="color: var(--warning); font-weight: bold;">2 ชิ้น</td>
+          <td>450.00 ฿</td>
+          <td><button class="btn btn-secondary" style="font-size: 12px; padding: 4px 8px;">+ เติมสินค้า</button></td>
+        </tr>
+        <tr>
+          <td>P-00108</td>
+          <td>สายเคเบิล HDMI 2.1 2m</td>
+          <td><span class="badge badge-primary">จับต้องได้</span></td>
+          <td style="color: var(--warning); font-weight: bold;">5 ชิ้น</td>
+          <td>290.00 ฿</td>
+          <td><button class="btn btn-secondary" style="font-size: 12px; padding: 4px 8px;">+ เติมสินค้า</button></td>
+        </tr>
+        <tr>
+          <td>P-00214</td>
+          <td>แป้นพิมพ์แมคคานิคอล RGB</td>
+          <td><span class="badge badge-primary">จับต้องได้</span></td>
+          <td style="color: var(--warning); font-weight: bold;">4 ชิ้น</td>
+          <td>1,290.00 ฿</td>
+          <td><button class="btn btn-secondary" style="font-size: 12px; padding: 4px 8px;">+ เติมสินค้า</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Screen 3: Add Product -->
+  <div id="screen-add" class="screen-container">
+    <div style="background: #DCFCE7; border-left: 4px solid var(--success); padding: 10px 16px; margin-bottom: 20px; border-radius: 4px; font-size: 13px; color: var(--success); font-weight: 600;">
+      [✓] บันทึกข้อมูลสำเร็จ! เพิ่มสินค้า "เมาส์ไร้สายเพื่อสุขภาพ" เข้าระบบเรียบร้อยแล้ว
+    </div>
+
+    <h3>บันทึกเพิ่มสินค้าใหม่ (Add Product Form)</h3>
+    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">* ระบุข้อมูลที่มีเครื่องหมายดอกจันให้ครบถ้วน</p>
+
+    <div class="form-group">
+      <label>1. ชนิดสินค้า (Product Type) <span class="required">*</span></label>
+      <div style="display: flex; gap: 24px; margin-top: 6px;">
+        <label style="font-weight: normal; cursor: pointer;">
+          <input type="radio" name="ptype" value="physical" checked onchange="toggleType()">
+          <strong>สินค้าที่จับต้องได้ (Physical Goods)</strong> - มีสต็อกจริงและนับจำนวน
+        </label>
+        <label style="font-weight: normal; cursor: pointer;">
+          <input type="radio" name="ptype" value="digital" onchange="toggleType()">
+          <strong>สินค้าดิจิทัล (Digital Goods)</strong> - ไฟล์ดาวน์โหลด/คีย์ ไม่จำกัดจำนวน
+        </label>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div class="form-group">
+        <label for="sku">2. รหัสสินค้า (SKU) <span class="required">*</span></label>
+        <input type="text" id="sku" value="P-00109" aria-required="true">
+      </div>
+      <div class="form-group">
+        <label for="category">3. หมวดหมู่สินค้า <span class="required">*</span></label>
+        <select id="category">
+          <option>อุปกรณ์คอมพิวเตอร์และต่อพ่วง</option>
+          <option>ซอฟต์แวร์และคีย์ลิขสิทธิ์</option>
+          <option>หนังสืออิเล็กทรอนิกส์ (E-Book)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="pname">4. ชื่อสินค้า (Product Name) <span class="required">*</span></label>
+      <input type="text" id="pname" value="เมาส์ไร้สายเพื่อสุขภาพ Ergonomic" aria-required="true">
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div class="form-group" id="qty-container">
+        <label for="pqty">5. จำนวนเริ่มต้นในสต็อก <span class="required">*</span></label>
+        <input type="number" id="pqty" value="15" min="0">
+        <span style="font-size: 11px; color: var(--text-muted);">หน่วยเป็นชิ้น (จำนวนเต็มบวก)</span>
+      </div>
+      <div class="form-group">
+        <label for="pprice">6. ราคาต่อหน่วย (บาท) <span class="required">*</span></label>
+        <input type="number" id="pprice" value="590.00" step="0.01">
+        <div class="help-error">[!] ราคาต้องมากกว่า 0 บาท เช่น 590.00</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="pimg">7. รูปภาพสินค้า (Optional)</label>
+      <input type="file" id="pimg">
+    </div>
+
+    <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--border-color);">
+      <button class="btn btn-secondary">ยกเลิก (Cancel)</button>
+      <button class="btn btn-primary">บันทึกสินค้า (Save Product)</button>
+    </div>
+  </div>
+
+  <script>
+    function showScreen(screenId) {
+      document.querySelectorAll('.screen-container').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      document.getElementById('screen-' + screenId).classList.add('active');
+      event.target.classList.add('active');
+    }
+    function toggleType() {
+      const isDigi = document.querySelector('input[name="ptype"][value="digital"]').checked;
+      const qtyInput = document.getElementById('pqty');
+      if (isDigi) {
+        qtyInput.disabled = true;
+        qtyInput.value = "0";
+      } else {
+        qtyInput.disabled = false;
+        qtyInput.value = "15";
+      }
+    }
+  </script>
+</body>
+</html>

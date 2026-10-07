@@ -1,0 +1,19 @@
+# Mockup File Reference & Design Artifacts
+
+ไฟล์ draw.io ในโฟลเดอร์ assets/ (เปิดดูหรือแก้ไขผ่าน draw.io หรือ Diagrams.net):
+assets/inventory_mockups.drawio
+
+ไฟล์ HTML Interactive Mockup Preview (เปิดผ่านเว็บบราวเซอร์ได้ทันที):
+assets/mockup_preview.html
+
+หน้าจอที่จัดทำ (ครบทั้ง 3 หน้าจอ):
+1. หน้าเข้าสู่ระบบ (Login Page)
+2. หน้าแดชบอร์ดสรุปยอดและแจ้งเตือนสต็อกต่ำ (Dashboard Page - Low Stock Alert)
+3. หน้าเพิ่มสินค้าใหม่ (Add Product Page - รองรับสินค้าจับต้องได้และสินค้าดิจิทัล)
+
+ชุดสีตามเกณฑ์ WCAG AA Contrast ที่ใช้ในระบบ:
+- Primary: #1E40AF (ปุ่มหลัก และเมนูของหน้าที่เปิดอยู่)
+- Success: #15803D (ข้อความสำเร็จ และ stock ปกติ)
+- Warning: #B45309 (stock ต่ำ และคำเตือน)
+- Text: #111827 (ข้อความหลักบนพื้นขาว)
+- Surface/Background: #FFFFFF, #F3F4F6, #F9FAFB
